@@ -3,49 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menù Sushi</title>
+    <title>Landing Page</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <nav>
-        <ul>
-            <li><a href="#uramaki" onclick="showSection('uramaki')">Uramaki</a></li>
-            <li><a href="#nigiri" onclick="showSection('nigiri')">Nigiri</a></li>
-            <li><a href="#hosomaki" onclick="showSection('hosomaki')">Hosomaki</a></li>
-        </ul>
-    </nav>
+<body class="fade-in landing-background">
+    <div class="overlay"></div>
+    <div class="content centered">
+        <h1>Benvenuto al nostro nuovo prodotto!</h1>
+        <p>Scopri le funzionalità uniche e innovative del nostro ultimo lancio. Guarda il video per saperne di più.</p>
+        <button class="btn" onclick="showVideo()">Guarda il Video</button>
+        <button class="btn" onclick="redirectToMenu()">Vai al Menu</button> <!-- Aggiunto pulsante per andare al menu direttamente -->
+    </div>
 
-    <section id="uramaki">
-        <h2>Uramaki</h2>
-        <div class="menu-item">California Roll - €8</div>
-        <div class="menu-item">Spicy Tuna Roll - €10</div>
-        <div class="menu-item">Dragon Roll - €12</div>
-    </section>
-
-    <section id="nigiri">
-        <h2>Nigiri</h2>
-        <div class="menu-item">Salmone - €5</div>
-        <div class="menu-item">Tonno - €6</div>
-        <div class="menu-item">Gambero - €7</div>
-    </section>
-
-    <section id="hosomaki">
-        <h2>Hosomaki</h2>
-        <div class="menu-item">Salmone - €4</div>
-        <div class="menu-item">Cetriolo - €3</div>
-        <div class="menu-item">Avocado - €4</div>
-    </section>
+    <!-- Modale per il video -->
+    <div id="videoModal" class="fade-in">
+        <span class="close-btn" onclick="closeVideo()">&times;</span>
+        <video id="promoVideo" controls>
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            Il tuo browser non supporta la riproduzione video.
+        </video>
+    </div>
 
     <script>
-        function showSection(sectionId) {
-            // Hide all sections
-            const sections = document.querySelectorAll("section");
-            sections.forEach(section => section.classList.remove("active"));
+        function showVideo() {
+            const videoModal = document.getElementById('videoModal');
+            const video = document.getElementById('promoVideo');
+            videoModal.classList.add('show');
+            video.play();
 
-            // Show the selected section
-            const targetSection = document.getElementById(sectionId);
-            targetSection.classList.add("active");
+            video.addEventListener('ended', function () {
+                fadeOutAndRedirect('menu.html');
+            });
         }
+
+        function closeVideo() {
+            const videoModal = document.getElementById('videoModal');
+            const video = document.getElementById('promoVideo');
+            videoModal.classList.remove('show');
+            video.pause();
+            video.currentTime = 0; // Riavvolgi il video
+        }
+
+        function redirectToMenu() {
+            fadeOutAndRedirect('menu.html');
+        }
+
+        function fadeOutAndRedirect(targetUrl) {
+            document.body.classList.add('fade-out');
+            setTimeout(() => {
+                window.location.href = targetUrl;
+            }, 1000); // Tempo per la dissolvenza prima del redirect
+        }
+
+        window.onload = () => {
+            document.body.classList.remove('fade-out');
+        };
     </script>
 </body>
 </html>

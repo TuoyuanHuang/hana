@@ -5,16 +5,79 @@ body {
     font-family: Arial, sans-serif;
     color: #333;
     transition: opacity 1s ease;
+    background-color: #f9f9f9; /* Aggiunto uno sfondo leggero per un aspetto più piacevole */
+}
+
+/* Background per la landing page */
+.landing-background {
+    background-image: url('images/sushi-01.jpeg'); /* Percorso relativo all'immagine */
+    background-size: cover;
+    background-position: center;
+    height: 100vh; /* Imposta l'altezza per coprire l'intera finestra del browser */
+    overflow: hidden;
+}
+
+/* Animazioni per la transizione tra pagine */
+.fade-in {
+    opacity: 0;
+    animation: fadeInAnimation 1s forwards;
+}
+
+@keyframes fadeInAnimation {
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-out {
+    opacity: 1;
+    animation: fadeOutAnimation 1s forwards;
+}
+
+@keyframes fadeOutAnimation {
+    to {
+        opacity: 0;
+    }
 }
 
 /* Navigatore per l'indice del menù di sushi */
 nav {
-    position: sticky;
-    top: 0;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    animation: fadeInAnimation 1s forwards ease-in-out;
+    transition: top 0.5s ease, transform 0.5s ease;
     background-color: #ff6347;
     padding: 15px 0;
     z-index: 1000;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-bottom: 3px solid #e5533c;
+}
+
+/* Sposta il navigatore in cima dopo l'apertura di una sezione */
+section.active ~ nav {
+    position: sticky;
+    top: 0;
+    transform: translateY(0);
+    opacity: 1;
+    transition: top 0.5s ease, transform 0.5s ease, opacity 0.5s ease;
+}
+
+/* Sposta il navigatore in cima dopo l'apertura di una sezione */
+section.active ~ nav {
+    position: sticky;
+    top: 0;
+    transform: translateY(0);
+    opacity: 1;
+    transition: top 0.5s ease, transform 0.5s ease, opacity 0.5s ease;
+}
+
+/* Sposta il navigatore in cima dopo l'apertura di una sezione */
+section.active ~ nav {
+    position: sticky;
+    top: 0;
+    transform: translateY(0);
 }
 
 nav ul {
@@ -22,15 +85,15 @@ nav ul {
     margin: 0;
     padding: 0;
     display: flex;
-    flex-wrap: nowrap; /* Impedisce agli elementi di andare su più righe */
-    overflow-x: auto; /* Consente lo scorrimento orizzontale */
-    scrollbar-width: thin; /* Stile del scrollbar per i browser compatibili */
-    -webkit-overflow-scrolling: touch; /* Migliora lo scorrimento su dispositivi mobili */
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
 }
 
 nav ul li {
     margin: 0 15px;
-    flex-shrink: 0; /* Impedisce agli elementi di ridimensionarsi per adattarsi alla larghezza */
+    flex-shrink: 0;
 }
 
 nav ul li a {
@@ -38,44 +101,110 @@ nav ul li a {
     color: white;
     font-size: 18px;
     font-weight: bold;
-    transition: color 0.3s;
-    white-space: nowrap; /* Evita che il testo venga spezzato su più righe */
+    transition: color 0.3s, transform 0.3s;
+    white-space: nowrap;
 }
 
 nav ul li a:hover {
     color: #333;
+    transform: scale(1.1); /* Aggiunto un leggero ingrandimento per l'hover */
 }
 
 /* Stile delle sezioni */
 section {
-    padding: 20px;
+    padding: 30px;
     margin: 20px auto;
-    max-width: 800px;
-    border-radius: 10px;
+    max-width: 900px;
+    border-radius: 15px;
     background-color: white;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    display: none; /* Nasconde inizialmente tutte le sezioni */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+    display: none;
     opacity: 0;
     transform: translateY(30px);
     transition: all 0.5s ease;
 }
 
 section.active {
-    display: block; /* Mostra la sezione quando attiva */
+    display: block;
     opacity: 1;
     transform: translateY(0);
+}
+
+/* Sposta il navigatore in cima dopo l'apertura di una sezione */
+section.active ~ nav {
+    position: sticky;
+    top: 0;
+    transform: translateY(0);
+}
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Mostra solo la sezione selezionata e nasconde le altre */
+section:not(.active) {
+    display: none;
+    opacity: 0;
+    transform: translateY(30px);
+}
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#uramaki {
+    display: block; /* Mostra la sezione Uramaki solo all'apertura del menu */
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+.hidden-section {
+    display: none;
+    opacity: 0;
+}
+
+.visible-section {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    animation: sectionFadeIn 0.5s ease forwards;
+}
+
+@keyframes sectionFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 h2 {
     text-align: center;
     color: #ff6347;
+    font-size: 28px;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeInAnimation 1s forwards ease-in-out;
+    transition: opacity 1s ease;
 }
 
 .menu-item {
-    margin: 10px 0;
-    font-size: 16px;
-    padding: 10px;
+    margin: 15px 0;
+    font-size: 18px;
+    padding: 15px;
     border-bottom: 1px solid #ddd;
+    background: #f3f3f3; /* Aggiunto uno sfondo leggero per evidenziare ogni elemento del menu */
+    border-radius: 8px;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.menu-item:hover {
+    background: #ffeadb;
+    transform: scale(1.02); /* Aggiunto un leggero ingrandimento per l'hover sugli elementi del menu */
 }
 
 .menu-item:last-child {
