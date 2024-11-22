@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="fade-in landing-background">
+    <div class="overlay"></div>
+    <div class="content centered">
+        <h1>Benvenuto al nostro nuovo prodotto!</h1>
+        <p>Scopri le funzionalità uniche e innovative del nostro ultimo lancio. Guarda il video per saperne di più.</p>
+        <button class="btn" onclick="showVideo()">Guarda il Video</button>
+    </div>
+
+    <!-- Modale per il video -->
+    <div id="videoModal" class="fade-in">
+        <span class="close-btn" onclick="closeVideo()">&times;</span>
+        <video id="promoVideo" controls>
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            Il tuo browser non supporta la riproduzione video.
+        </video>
+    </div>
+
+    <script>
+        function showVideo() {
+            const videoModal = document.getElementById('videoModal');
+            const video = document.getElementById('promoVideo');
+            videoModal.classList.add('show');
+            video.play();
+
+            video.addEventListener('ended', function () {
+                document.body.classList.add('fade-out');
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 1000);
+            });
+        }
+
+        function closeVideo() {
+            const videoModal = document.getElementById('videoModal');
+            const video = document.getElementById('promoVideo');
+            videoModal.classList.remove('show');
+            video.pause();
+            video.currentTime = 0;
+        }
+
+        window.onload = () => {
+            document.body.classList.remove('fade-out');
+        };
+    </script>
+</body>
+</html>

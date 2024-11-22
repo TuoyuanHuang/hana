@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menù Sushi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#uramaki" onclick="showSection('uramaki')">Uramaki</a></li>
+            <li><a href="#nigiri" onclick="showSection('nigiri')">Nigiri</a></li>
+            <li><a href="#hosomaki" onclick="showSection('hosomaki')">Hosomaki</a></li>
+        </ul>
+    </nav>
+
+    <section id="uramaki">
+        <h2>Uramaki</h2>
+        <div class="menu-item">California Roll - €8</div>
+        <div class="menu-item">Spicy Tuna Roll - €10</div>
+        <div class="menu-item">Dragon Roll - €12</div>
+    </section>
+
+    <section id="nigiri">
+        <h2>Nigiri</h2>
+        <div class="menu-item">Salmone - €5</div>
+        <div class="menu-item">Tonno - €6</div>
+        <div class="menu-item">Gambero - €7</div>
+    </section>
+
+    <section id="hosomaki">
+        <h2>Hosomaki</h2>
+        <div class="menu-item">Salmone - €4</div>
+        <div class="menu-item">Cetriolo - €3</div>
+        <div class="menu-item">Avocado - €4</div>
+    </section>
+
+    <script>
+        function showSection(sectionId) {
+            // Nasconde tutte le sezioni
+            const sections = document.querySelectorAll("section");
+            sections.forEach(section => section.classList.remove("active"));
+
+            // Mostra la sezione selezionata
+            const targetSection = document.getElementById(sectionId);
+            targetSection.classList.add("active");
+        }
+    </script>
+</body>
+</html>
