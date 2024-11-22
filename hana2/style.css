@@ -7,38 +7,6 @@ body {
     transition: opacity 1s ease;
 }
 
-/* Background per la landing page */
-.landing-background {
-    background-image: url('images/sfondo.jpg'); /* Modifica il percorso se necessario */
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    overflow: hidden;
-}
-
-/* Animazioni per la transizione tra pagine */
-.fade-in {
-    opacity: 0;
-    animation: fadeInAnimation 1s forwards;
-}
-
-@keyframes fadeInAnimation {
-    to {
-        opacity: 1;
-    }
-}
-
-.fade-out {
-    opacity: 1;
-    animation: fadeOutAnimation 1s forwards;
-}
-
-@keyframes fadeOutAnimation {
-    to {
-        opacity: 0;
-    }
-}
-
 /* Navigatore per l'indice del menù di sushi */
 nav {
     position: sticky;
@@ -47,7 +15,6 @@ nav {
     padding: 15px 0;
     z-index: 1000;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.5s ease;
 }
 
 nav ul {
@@ -55,11 +22,15 @@ nav ul {
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
+    flex-wrap: nowrap; /* Impedisce agli elementi di andare su più righe */
+    overflow-x: auto; /* Consente lo scorrimento orizzontale */
+    scrollbar-width: thin; /* Stile del scrollbar per i browser compatibili */
+    -webkit-overflow-scrolling: touch; /* Migliora lo scorrimento su dispositivi mobili */
 }
 
 nav ul li {
     margin: 0 15px;
+    flex-shrink: 0; /* Impedisce agli elementi di ridimensionarsi per adattarsi alla larghezza */
 }
 
 nav ul li a {
@@ -68,6 +39,7 @@ nav ul li a {
     font-size: 18px;
     font-weight: bold;
     transition: color 0.3s;
+    white-space: nowrap; /* Evita che il testo venga spezzato su più righe */
 }
 
 nav ul li a:hover {
@@ -110,18 +82,6 @@ h2 {
     border-bottom: none;
 }
 
-/* Stile per dispositivi mobili */
-@media (max-width: 768px) {
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    nav ul li {
-        margin: 10px 0;
-    }
-}
-
 /* Stile per la landing page */
 .overlay {
     position: absolute;
@@ -144,7 +104,7 @@ h2 {
     max-width: 600px;
     padding: 20px;
     color: white;
-    background: rgba(0, 0, 0, 0.5); /* Sfondo semi-trasparente per migliorare la leggibilità del testo */
+    background: rgba(0, 0, 0, 0.5);
     border-radius: 15px;
 }
 

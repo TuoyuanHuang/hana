@@ -1,51 +1,91 @@
 <!DOCTYPE html>
 <html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Menù Sushi</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <nav>
-        <ul>
-            <li><a href="#uramaki" onclick="showSection('uramaki')">Uramaki</a></li>
-            <li><a href="#nigiri" onclick="showSection('nigiri')">Nigiri</a></li>
-            <li><a href="#hosomaki" onclick="showSection('hosomaki')">Hosomaki</a></li>
-        </ul>
+      <ul>
+        <li><a href="#uramaki" onclick="showSection('uramaki')">Uramaki</a></li>
+        <li><a href="#nigiri" onclick="showSection('nigiri')">Nigiri</a></li>
+        <li>
+          <a href="#hosomaki" onclick="showSection('hosomaki')">Hosomaki</a>
+        </li>
+        <li><a href="#sashimi" onclick="showSection('sashimi')">Sashimi</a></li>
+        <li><a href="#tempura" onclick="showSection('tempura')">Tempura</a></li>
+        <li><a href="#bevande" onclick="showSection('bevande')">Bevande</a></li>
+        <li><a href="#dessert" onclick="showSection('dessert')">Dessert</a></li>
+      </ul>
     </nav>
 
     <section id="uramaki">
-        <h2>Uramaki</h2>
-        <div class="menu-item">California Roll - €8</div>
-        <div class="menu-item">Spicy Tuna Roll - €10</div>
-        <div class="menu-item">Dragon Roll - €12</div>
+      <h2>Uramaki</h2>
+      <div class="menu-item">California Roll - €8</div>
+      <div class="menu-item">Spicy Tuna Roll - €10</div>
+      <div class="menu-item">Dragon Roll - €12</div>
+      <div class="menu-item">Philadelphia Roll - €9</div>
     </section>
 
     <section id="nigiri">
-        <h2>Nigiri</h2>
-        <div class="menu-item">Salmone - €5</div>
-        <div class="menu-item">Tonno - €6</div>
-        <div class="menu-item">Gambero - €7</div>
+      <h2>Nigiri</h2>
+      <div class="menu-item">Salmone - €5</div>
+      <div class="menu-item">Tonno - €6</div>
+      <div class="menu-item">Gambero - €7</div>
+      <div class="menu-item">Anguilla - €8</div>
     </section>
 
     <section id="hosomaki">
-        <h2>Hosomaki</h2>
-        <div class="menu-item">Salmone - €4</div>
-        <div class="menu-item">Cetriolo - €3</div>
-        <div class="menu-item">Avocado - €4</div>
+      <h2>Hosomaki</h2>
+      <div class="menu-item">Salmone - €4</div>
+      <div class="menu-item">Cetriolo - €3</div>
+      <div class="menu-item">Avocado - €4</div>
+      <div class="menu-item">Carota - €3</div>
+    </section>
+
+    <section id="sashimi">
+      <h2>Sashimi</h2>
+      <div class="menu-item">Sashimi di Salmone - €10</div>
+      <div class="menu-item">Sashimi di Tonno - €12</div>
+      <div class="menu-item">Sashimi di Branzino - €11</div>
+      <div class="menu-item">Sashimi Misto - €15</div>
+    </section>
+
+    <section id="tempura">
+      <h2>Tempura</h2>
+      <div class="menu-item">Tempura di Gamberi - €9</div>
+      <div class="menu-item">Tempura di Verdure - €7</div>
+      <div class="menu-item">Tempura Misto - €10</div>
+    </section>
+
+    <section id="bevande">
+      <h2>Bevande</h2>
+      <div class="menu-item">Tè Verde - €3</div>
+      <div class="menu-item">Sake - €5</div>
+      <div class="menu-item">Birra Giapponese - €6</div>
+      <div class="menu-item">Acqua Minerale - €2</div>
+    </section>
+
+    <section id="dessert">
+      <h2>Dessert</h2>
+      <div class="menu-item">Mochi Gelato - €4</div>
+      <div class="menu-item">Dorayaki - €5</div>
+      <div class="menu-item">Gelato al Tè Verde - €4</div>
+      <div class="menu-item">Cheesecake al Miso - €6</div>
     </section>
 
     <script>
-        function showSection(sectionId) {
-            // Nasconde tutte le sezioni
-            const sections = document.querySelectorAll("section");
-            sections.forEach(section => section.classList.remove("active"));
+      function showSection(sectionId) {
+        // Nasconde tutte le sezioni
+        const sections = document.querySelectorAll("section");
+        sections.forEach((section) => section.classList.remove("active"));
 
-            // Mostra la sezione selezionata
-            const targetSection = document.getElementById(sectionId);
-            targetSection.classList.add("active");
-        }
+        // Mostra la sezione selezionata
+        const targetSection = document.getElementById(sectionId);
+        targetSection.classList.add("active");
+      }
     </script>
-</body>
+  </body>
 </html>
